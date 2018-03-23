@@ -98,7 +98,6 @@ func init() {
 	Datadog.SetDefault("check_runners", int64(1))
 	Datadog.SetDefault("expvar_port", "5000")
 	Datadog.SetDefault("auth_token_file_path", "")
-	Datadog.SetDefault("bind_host", "localhost")
 
 	// Use to output logs in JSON format
 	BindEnvAndSetDefault("log_format_json", false)
@@ -137,20 +136,7 @@ func init() {
 	Datadog.SetDefault("forwarder_timeout", 20)
 	Datadog.SetDefault("forwarder_retry_queue_max_size", 30)
 	BindEnvAndSetDefault("forwarder_num_workers", 1)
-	// Dogstatsd
-	Datadog.SetDefault("use_dogstatsd", true)
-	Datadog.SetDefault("dogstatsd_port", 8125)          // Notice: 0 means UDP port closed
-	Datadog.SetDefault("dogstatsd_buffer_size", 1024*8) // 8KB buffer
-	Datadog.SetDefault("dogstatsd_non_local_traffic", false)
-	Datadog.SetDefault("dogstatsd_socket", "") // Notice: empty means feature disabled
-	Datadog.SetDefault("dogstatsd_stats_port", 5000)
-	Datadog.SetDefault("dogstatsd_stats_enable", false)
-	Datadog.SetDefault("dogstatsd_stats_buffer", 10)
-	Datadog.SetDefault("dogstatsd_expiry_seconds", 300)
-	Datadog.SetDefault("dogstatsd_origin_detection", false) // Only supported for socket traffic
-	Datadog.SetDefault("statsd_forward_host", "")
-	Datadog.SetDefault("statsd_forward_port", 0)
-	BindEnvAndSetDefault("statsd_metric_namespace", "")
+
 	// Autoconfig
 	Datadog.SetDefault("autoconf_template_dir", "/datadog/check_configs")
 	Datadog.SetDefault("exclude_pause_container", true)
@@ -231,15 +217,10 @@ func init() {
 	Datadog.BindEnv("cmd_port")
 	Datadog.BindEnv("conf_path")
 	Datadog.BindEnv("enable_metadata_collection")
-	Datadog.BindEnv("dogstatsd_port")
-	Datadog.BindEnv("bind_host")
 	Datadog.BindEnv("proc_root")
 	Datadog.BindEnv("container_proc_root")
 	Datadog.BindEnv("container_cgroup_root")
-	Datadog.BindEnv("dogstatsd_socket")
-	Datadog.BindEnv("dogstatsd_stats_port")
-	Datadog.BindEnv("dogstatsd_non_local_traffic")
-	Datadog.BindEnv("dogstatsd_origin_detection")
+
 	Datadog.BindEnv("check_runners")
 
 	Datadog.BindEnv("log_file")

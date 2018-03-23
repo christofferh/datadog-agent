@@ -1,0 +1,14 @@
+{{- range .Sections}}
+# {{ .Name }}
+# {{.Description}}
+#
+  {{- range .Options}}
+    {{- if .Undocumented == false }}
+      {{- if .YAMLDesc }}
+# {{ .YAMLDesc}}
+      {{- else }}
+# {{ .Description}}
+      {{ end -}}
+    {{ end -}}
+  {{ end -}}
+{{ end -}}
